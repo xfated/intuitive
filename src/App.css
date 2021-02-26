@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+:root {
+  --background: #F3F3F3;
+  --block: #FFFFFF;
+  --highlight: #DE353C;
+  --header: #3c1874;
+  --muted: #932432;
+  --text: #283747;
+  --icon: #afe3f8;
+  --profilebackground: #ecf1cf;
+  --workbackground: #fdf9f7;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'simplifica';
+  src: url('./fonts/simplifica/simplifica_typeface-webfont.woff2') format('woff2'),
+       url('./fonts/simplifica/simplifica_typeface-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.divider{
+  border-top: 4px solid var(--muted);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.flex {
+  display:flex;
 }
 
-.App-link {
-  color: #61dafb;
+.flex-stretch {
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flex-justify-evenly {
+  justify-content: space-evenly !important;
+}
+
+.flex-horizontal-center {
+  justify-content: center !important;
+}
+
+.flex-vertical-center{
+  align-items: center !important;
+}
+
+.section-header{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 5% 0;
+}
+
+html {
+  font-size: 0.7rem;
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+  html {font-size:0.8rem;} /*1rem = 16px*/
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  html {font-size:0.85rem;} /*1rem = 16px*/
 }

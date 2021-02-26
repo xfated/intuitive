@@ -1,0 +1,33 @@
+.main-block{
+    background: var(--background);   
+    max-width:100%;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex: 1;
+    min-height: 50vh;
+}
+
+.story-input{
+    padding: 20px;
+}
+
+.story-input-box{
+    border-radius: 10px;
+    border-color:rgba(0,0,0,0);
+    /* width: 50%; */
+}
+
+.story-title{
+    padding: 10px;
+}
+
+.story-story{
+    font-family:Arial, Helvetica, sans-serif;
+    background: #fdfceb;
+    border-radius:10px;
+    min-height: 40vw;
+}
+
+.story-content{
+    padding: 10px;
+}
