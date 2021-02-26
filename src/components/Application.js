@@ -64,8 +64,8 @@ const Application = (props) => {
                 </div>
                 <div className="col-12 story-input text-center">
                     <Form className="text-center">
-                        <FormGroup>
-                            <Input type="textarea" name="prompt" id="storyprompt" className="story-input-box"
+                        <FormGroup className="flex flex-horizontal-center">
+                            <Input type="textarea" name="prompt" id="storyprompt" className="col-md-8 story-input-box"
                                 value={storyPrompt} onChange={changeStoryPrompt} />
                         </FormGroup>    
                         <FormGroup>
@@ -81,8 +81,8 @@ const Application = (props) => {
                         {waitPhrase}
                     </h5>
                 </div>
-                <div className="col-12 text-center">
-                    <div className="story-story offset-md-2 col-md-8 text-left">
+                <div className="col-12 flex flex-horizontal-center">
+                    <div className="story-story col-md-8">
                         <p className="story-content">
                             {story}
                         </p>
