@@ -1,20 +1,61 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Application.css'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { WaitPhrases } from '../misc/waitphrases';
 
 const Application = (props) => {
 
-    const [storyPrompt, setStoryPrompt] = useState('One windy morning...')
-    const [story, setStory] = useState('I wonder what\'s in story today...')
+    const [storyPrompt, setStoryPrompt] = useState('One windy morning...');
+    const [story, setStory] = useState('I wonder what\'s in store today...');
+    const [storyLoading, setStoryLoading] = useState(false);
+    const [storyLoaded, setStoryLoaded] = useState(false);
+    const [waitPhrase, setWaitPhrase] = useState('What shall it be today?');
+
+
+    useEffect(() => {
+        // display phrases every interval while story is loading loaded yet
+        const displayPhrases = setInterval(() => {
+            if (storyLoading === true){
+                var idx = Math.floor(Math.random() * WaitPhrases.length);
+                console.log(idx);
+                setWaitPhrase(WaitPhrases[idx]);
+            }
+        }, 2000);
+        return () => clearInterval(displayPhrases);
+    }, [storyLoading]);
 
     function changeStoryPrompt(event) {
         setStoryPrompt(event.value);
     }   
 
-    function submitStoryPrompt(){
+    async function getStory(event){
+        // Things to do while story is loading
+        setStoryLoaded(false);
+        setStoryLoading(true);
 
+        // Making request for story
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                prompt: ""
+            })
+        };
+        event.preventDefault();
+        await setTimeout(() => {
+            console.log('waiting');
+            setStoryLoaded(true);
+            console.log(storyLoading);
+            setStoryLoading(false);
+            setWaitPhrase('Here\'s today\'s adventure!');
+            setStory('hello');
+        }, 10000);
+
+        // Story loaded, turn off other stuff
+        
+        
     }
-    
+
     return(
         <div className="main-block container">
             <div className="row">
@@ -28,7 +69,8 @@ const Application = (props) => {
                                 value={storyPrompt} onChange={changeStoryPrompt} />
                         </FormGroup>    
                         <FormGroup>
-                            <Button type="submit" className="btn btn-outline-info bg-light btn-lg">
+                            <Button className="btn btn-outline-info bg-light btn-lg"
+                                onClick={getStory}>
                                 <small>generate</small>
                             </Button>
                         </FormGroup>
@@ -36,7 +78,7 @@ const Application = (props) => {
                 </div>
                 <div className="col-12 story-title text-center">
                     <h5>
-                        Your long awaited story!
+                        {waitPhrase}
                     </h5>
                 </div>
                 <div className="col-12 text-center">
