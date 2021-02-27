@@ -42,3 +42,30 @@
     transition: all 500ms ease-in;
 }
 
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.navbar {
+    background: #add8e9;
+}
+.modal-buttons{
+    padding: 10px;
+}
+
+.motivation-icon {
+    color: #fdff7b;
+}
+
+.tutorial-icon{
+    color: #ffe3fc;
+}
+.tutorial-modal{
+    max-width: 80vw !important;
+}
+
+.modal-header{
+    font-size: 14rem !important;
+}

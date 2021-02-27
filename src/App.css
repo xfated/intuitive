@@ -48,8 +48,8 @@
 }
 
 .section-title{
-  font-family: simplifica, Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-family: simplifica, Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
 }
 
 html {

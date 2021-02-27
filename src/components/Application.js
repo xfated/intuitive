@@ -41,24 +41,49 @@ const Application = (props) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "promptText": "hello",
+                "promptText": "This is from the app",
             })
         };
-        console.log(requestOptions);
+        // console.log(requestOptions);
         event.preventDefault();
-        // const response = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
-        // const data = await response.json();
-        // console.log('data obtained:' + data);
-        await setTimeout(() => {
-            console.log('waiting');
-            setStoryLoaded(true);
-            console.log(storyLoading);
-            setStoryLoading(false);
-            setWaitPhrase('Here\'s today\'s adventure!');
-            setStory('Inserts story here');
-        }, 10000);
+        //https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/ https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/test/
+        // fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions)
+        //     .then(async (res) => {
+        //         var data = await res.json();
+        //         var message = data.message;
+        //         var recordId = data.recordId;
+        //     })
+        //     .catch(console.error);
+        try{
+            // submit prompt and retrieve record id 
+            var result = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
+            var data = await result.json();
+            var message = data.message;
+            var recordId = data.recordId;
+            console.log('message is: ' + message);
+            console.log('record id is: ' + recordId);
+            
+            // fetch story after 10seconds (takes time to generate)
+            await setTimeout(() => {
+                
+                // Story loaded, turn off other stuff
+            }, 10000);
+        }
+        catch (e) {
+            console.log('Error' + e);
+        }
+            
+        // console.log('data is: ' + data);
+        // await setTimeout(() => {
+        //     console.log('waiting');
+        //     setStoryLoaded(true);
+        //     console.log(storyLoading);
+        //     setStoryLoading(false);
+        //     setWaitPhrase('Here\'s today\'s adventure!');
+        //     setStory('Inserts story here');
+        // }, 10000);
 
-        // Story loaded, turn off other stuff
+
         
     }
 
@@ -93,8 +118,10 @@ const Application = (props) => {
                             <FormGroup>
                                 <Button className="btn btn-outline-info bg-light btn-lg"
                                     onClick={getStory}>
-                                    <small>generate</small>
+                                    <small>Generate</small>
+                                    <i class="fas fa-book fa-lg ml-2"></i>
                                 </Button>
+                                
                             </FormGroup>
                         </Form>     
                     </div>
