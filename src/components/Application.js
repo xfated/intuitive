@@ -101,8 +101,8 @@ const Application = (props) => {
         <div>
             <div className="main-block container">
                 <div className="col-12 text-center section-header p-7">
-                    <h2 className="mb-0 section-title">The Story Teller</h2>
-                    A tiny prompt for a world of adventure
+                    <h1 className="mb-0 section-title">The Story Teller</h1>
+                    <h6>A tiny prompt for a world of adventure</h6>
                     <div className="offset-2 col-8 border-bottom"></div>
                 </div>
                 <div className="row">

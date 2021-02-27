@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { CSSTransition } from "react-transition-group";
 import './Header.css';
 import { Instructions } from '../misc/instructions';
+import { Motivations } from '../misc/motivations';
+import { Creators } from '../misc/creators';
 
 class Header extends Component {
 
@@ -42,7 +44,7 @@ class Header extends Component {
         const Tutorial = () => {
             const TutorialInstructions = Instructions.map((instruction) => {
                 return( 
-                    <ListGroupItem>
+                    <ListGroupItem key={instruction.text}>
                         <div className="row">
                             <div className="col-6">
                                 {instruction.text}
@@ -58,6 +60,53 @@ class Header extends Component {
                 <ListGroup flush>
                     {TutorialInstructions}
                 </ListGroup>
+            );
+        }
+        const Motivation = () => {
+            const MotivationParts = Motivations.map((motivation) => {
+                return(
+                    <ListGroupItem key={motivation.point}>
+                        <div className="row">
+                            <div className="col-12 col-md-4 border-right">
+                                <h2>{motivation.point}</h2>
+                            </div>
+                            <div className="col-12 col-md-8">
+                                <p>{motivation.description}</p>
+                            </div>      
+                        </div>
+                    </ListGroupItem>
+                );
+            });
+            return (
+                <ListGroup flush>
+                    {MotivationParts}
+                </ListGroup>
+            )
+        }
+        const RenderCreators = () => {
+            const CreatorPics = Creators.map((creator) => {
+                return(
+                    <div className="col-6 col-md-3 p-3">
+                        <a href={creator.link} className="creator-link">
+                            <div className="row">
+                                <div className="col-12 flex flex-horizontal-center">
+                                    <div className="profile-pic-frame">
+                                        <img className="profile-pic" src={creator.image}
+                                            alt={creator.name} />
+                                    </div>
+                                </div>
+                                <div className="col-12 text-center mt-1 creator-profile-text">
+                                    <span><strong>{creator.name}</strong></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                );
+            });
+            return(
+                <div className="row">
+                    {CreatorPics}
+                </div>
             );
         }
         return(
@@ -80,11 +129,9 @@ class Header extends Component {
                                 borderRadius: "0px"}}>
                     <Container className="text-center">
                         <h1 className="display-3 profile-header text-center">
-                            <img src="assets/images/tattletale.png" width="70%" alt="TattleTale"></img>
+                            <img src="assets/images/tattletale.png" width="50%" alt="TattleTale"></img>
                         </h1>
                         <CSSTransition in={this.state.mounted} classNames="profile-desc-trans" timeout={1000}>
-                            {/* <p className="lead profile-desc">{this.state.description}</p>
-                             */}
                             <blockquote className="blockquote text-center">
                                 <i className="fa fa-quote-left fa-pull-left"></i>
                                 <p className="mb-0">
@@ -98,7 +145,7 @@ class Header extends Component {
                         </CSSTransition>
                     </Container>
                 </Jumbotron>
-                <Modal isOpen={this.state.isTutModalOpen} toggle={this.toggleTutModal} className="tutorial-modal">
+                <Modal isOpen={this.state.isTutModalOpen} toggle={this.toggleTutModal} className="modal-w80">
                     <ModalHeader toggle={this.toggleTutModal} charCode="x" >
                         Tutorial
                     </ModalHeader>  
@@ -106,12 +153,13 @@ class Header extends Component {
                         <Tutorial />
                     </ModalBody>
                 </Modal>
-                <Modal isOpen={this.state.isMotivationModalOpen} toggle={this.toggleMotivationModal}>
+                <Modal isOpen={this.state.isMotivationModalOpen} toggle={this.toggleMotivationModal} className="modal-w80">
                     <ModalHeader toggle={this.toggleMotivationModal} charCode="x">
                         Project Motivations
                     </ModalHeader>
                     <ModalBody>
-                        
+                        <Motivation />
+                        <RenderCreators />
                     </ModalBody>
                 </Modal>
             </React.Fragment>

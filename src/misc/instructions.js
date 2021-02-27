@@ -4,11 +4,11 @@ export const Instructions = [
         "image":'assets/images/instr1.png'
     },
     {
-        "text":'2. Click generate',
+        "text":'2. Click generate.',
         "image":'assets/images/instr2.png'
     },
     {
-        "text":'3. Wait for your story',
+        "text":'3. Wait for your story.',
         "image":'assets/images/instr3.png'
     },
     {

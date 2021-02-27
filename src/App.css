@@ -49,6 +49,15 @@
   align-items: center !important;
 }
 
+.modal-w80{
+  max-width: 80vw !important;
+}
+
+.modal-header{
+  font-size: 14rem !important;
+}
+
+
 .section-header{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 5% 0;

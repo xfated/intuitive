@@ -62,10 +62,30 @@
 .tutorial-icon{
     color: #ffe3fc;
 }
-.tutorial-modal{
-    max-width: 80vw !important;
+
+.profile-pic-frame {
+    width: 65% !important;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--text);
+    text-align: center;
+    height:0;
+    padding-bottom: 60%;
 }
 
-.modal-header{
-    font-size: 14rem !important;
+.profile-pic {
+    display: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    height: auto;
+}
+.creator-link{
+    color: black !important;                    
+}
+.creator-profile-text{
+    font-family:didactgothic;
 }
