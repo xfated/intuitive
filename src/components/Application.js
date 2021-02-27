@@ -38,10 +38,7 @@ const Application = (props) => {
             mode:'cors',
             method: 'POST',
             headers: { 
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*',
-                "Access-Control-Allow-Headers": "'Content-Type'",
-                // 'Origin':'http://localhost:3000'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "promptText": "hello",
@@ -58,7 +55,7 @@ const Application = (props) => {
             console.log(storyLoading);
             setStoryLoading(false);
             setWaitPhrase('Here\'s today\'s adventure!');
-            setStory('hello');
+            setStory('Inserts story here');
         }, 10000);
 
         // Story loaded, turn off other stuff
