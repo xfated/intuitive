@@ -135,7 +135,9 @@ const Application = (props) => {
                                     {waitPhrase}
                                     {
                                         storyLoaded &&
-                                        <i className="ml-4 fas fa-bullhorn fa-lg"></i>
+                                        <Button className="read-aloud-button">
+                                            <i className="ml-4 fas fa-bullhorn fa-lg"></i>
+                                        </Button>
                                     }
                                 </h5>
                             </CSSTransition>

@@ -33,6 +33,12 @@
     padding: 10px;
 }
 
+.read-aloud-button{
+    background: rgba(0,0,0,0);
+    border: none;
+    color: var(--text);
+}
+
 .wait-phrase-enter {
     position: absolute;
     top: 5;
