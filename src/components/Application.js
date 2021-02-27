@@ -14,14 +14,14 @@ const Application = (props) => {
 
     useEffect(() => {
         // display phrases every interval while story is loading loaded yet
-        const displayPhrases = setInterval(() => {
-            if (storyLoading === true){
-                var idx = Math.floor(Math.random() * WaitPhrases.length);
-                console.log(idx);
-                setWaitPhrase(WaitPhrases[idx]);
-            }
-        }, 2000);
-        return () => clearInterval(displayPhrases);
+        if (storyLoading === true){
+            const displayPhrases = setInterval(() => {
+                    var idx = Math.floor(Math.random() * WaitPhrases.length);
+                    console.log(idx);
+                    setWaitPhrase(WaitPhrases[idx]);
+            }, 2000);
+            return () => clearInterval(displayPhrases);
+        }
     }, [storyLoading]);
 
     function changeStoryPrompt(event) {
@@ -30,26 +30,29 @@ const Application = (props) => {
 
     async function getStory(event){
         // Things to do while story is loading
-        setStoryLoaded(false);
-        setStoryLoading(true);
+        // setStoryLoaded(false);
+        // setStoryLoading(true);
 
         // Making request for story
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                prompt: ""
+                promptText: "hello"
             })
         };
         event.preventDefault();
-        await setTimeout(() => {
-            console.log('waiting');
-            setStoryLoaded(true);
-            console.log(storyLoading);
-            setStoryLoading(false);
-            setWaitPhrase('Here\'s today\'s adventure!');
-            setStory('hello');
-        }, 10000);
+        const response = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
+        const data = await response.json();
+        console.log('data obtained:' + data);
+        // await setTimeout(() => {
+        //     console.log('waiting');
+        //     setStoryLoaded(true);
+        //     console.log(storyLoading);
+        //     setStoryLoading(false);
+        //     setWaitPhrase('Here\'s today\'s adventure!');
+        //     setStory('hello');
+        // }, 10000);
 
         // Story loaded, turn off other stuff
         
@@ -65,7 +68,7 @@ const Application = (props) => {
                 <div className="col-12 story-input text-center">
                     <Form className="text-center">
                         <FormGroup className="flex flex-horizontal-center">
-                            <Input type="textarea" name="prompt" id="storyprompt" className="col-md-8 story-input-box"
+                            <Input type="textarea" name="prompt" id="storyprompt" className="col-12 col-md-8 story-input-box"
                                 value={storyPrompt} onChange={changeStoryPrompt} />
                         </FormGroup>    
                         <FormGroup>
@@ -82,7 +85,7 @@ const Application = (props) => {
                     </h5>
                 </div>
                 <div className="col-12 flex flex-horizontal-center">
-                    <div className="story-story col-md-8">
+                    <div className="story-story col-12 col-md-8">
                         <p className="story-content">
                             {story}
                         </p>
