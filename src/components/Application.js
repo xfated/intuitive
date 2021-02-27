@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './Application.css'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { WaitPhrases } from '../misc/waitphrases';
+import Book from './Book';
+import { TransitionGroup, CSSTransition } from 'react-transition-group'; 
 
 const Application = (props) => {
 
@@ -11,13 +13,11 @@ const Application = (props) => {
     const [storyLoaded, setStoryLoaded] = useState(false);
     const [waitPhrase, setWaitPhrase] = useState('What shall it be today?');
 
-
     useEffect(() => {
         // display phrases every interval while story is loading loaded yet
         if (storyLoading === true){
             const displayPhrases = setInterval(() => {
                     var idx = Math.floor(Math.random() * WaitPhrases.length);
-                    console.log(idx);
                     setWaitPhrase(WaitPhrases[idx]);
             }, 2000);
             return () => clearInterval(displayPhrases);
@@ -30,33 +30,49 @@ const Application = (props) => {
 
     async function getStory(event){
         // Things to do while story is loading
-        // setStoryLoaded(false);
-        // setStoryLoading(true);
+        setStoryLoaded(false);
+        setStoryLoading(true);
 
         // Making request for story
         const requestOptions = {
+            mode:'cors',
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*',
+                "Access-Control-Allow-Headers": "'Content-Type'",
+                // 'Origin':'http://localhost:3000'
+            },
             body: JSON.stringify({
-                promptText: "hello"
+                "promptText": "hello",
             })
         };
+        console.log(requestOptions);
         event.preventDefault();
-        const response = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
-        const data = await response.json();
-        console.log('data obtained:' + data);
-        // await setTimeout(() => {
-        //     console.log('waiting');
-        //     setStoryLoaded(true);
-        //     console.log(storyLoading);
-        //     setStoryLoading(false);
-        //     setWaitPhrase('Here\'s today\'s adventure!');
-        //     setStory('hello');
-        // }, 10000);
+        // const response = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
+        // const data = await response.json();
+        // console.log('data obtained:' + data);
+        await setTimeout(() => {
+            console.log('waiting');
+            setStoryLoaded(true);
+            console.log(storyLoading);
+            setStoryLoading(false);
+            setWaitPhrase('Here\'s today\'s adventure!');
+            setStory('hello');
+        }, 10000);
 
         // Story loaded, turn off other stuff
         
-        
+    }
+
+    // Downloads the story as a .txt file for user
+    function downloadStory() {
+        const element = document.createElement("a");
+        const file = new Blob([story], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = storyPrompt.replace(/[^a-z]/gi, '') + '.txt';
+        document.body.appendChild(element);
+        element.click();
     }
 
     return(
@@ -80,15 +96,29 @@ const Application = (props) => {
                     </Form>     
                 </div>
                 <div className="col-12 story-title text-center">
-                    <h5>
-                        {waitPhrase}
-                    </h5>
+                    <TransitionGroup>
+                        <CSSTransition
+                            timeout={500}
+                            key={waitPhrase}
+                            classNames="wait-phrase">
+                            <h5>
+                                {waitPhrase}
+                            </h5>
+                        </CSSTransition>
+                    </TransitionGroup>
                 </div>
                 <div className="col-12 flex flex-horizontal-center">
                     <div className="story-story col-12 col-md-8">
-                        <p className="story-content">
-                            {story}
-                        </p>
+                        <div className="story-content">
+                            <Book story={story} />
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 flex flex-horizontal-center p-5">
+                    <div>
+                        <button onClick={downloadStory} className="btn btn-lg btn-outline-dark">
+                            Download your Story!
+                        </button>
                     </div>
                 </div>
             </div>

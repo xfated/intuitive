@@ -18,6 +18,8 @@
 
 .story-title{
     padding: 10px;
+    /* height: 5vh; */
+    /* background: green; */
 }
 
 .story-story{
@@ -29,4 +31,23 @@
 
 .story-content{
     padding: 10px;
+}
+
+.wait-phrase-enter {
+    position: absolute;
+    top: 5;
+    left: 0;
+    right: 0;
+    opacity:0.01;
+}
+.wait-phrase-enter-active{
+    opacity:1;
+    transition: all 500ms;
+}
+.wait-phrase-exit{
+    opacity:1;
+}
+.wait-phrase-exit-active {
+    opacity:0.01;
+    transition: all 500ms;
 }
