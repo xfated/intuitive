@@ -47,6 +47,11 @@
   padding: 5% 0;
 }
 
+.section-title{
+  font-family: simplifica, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
 html {
   font-size: 0.7rem;
 }

@@ -11,7 +11,7 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            title: 'The Story Teller',
+            title: 'TattleTale',
             mounted: false,
             description: ''
         }
