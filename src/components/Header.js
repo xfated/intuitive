@@ -83,7 +83,18 @@ class Header extends Component {
                             <img src="assets/images/tattletale.png" width="70%" alt="TattleTale"></img>
                         </h1>
                         <CSSTransition in={this.state.mounted} classNames="profile-desc-trans" timeout={1000}>
-                            <p className="lead profile-desc">{this.state.description}</p>
+                            {/* <p className="lead profile-desc">{this.state.description}</p>
+                             */}
+                            <blockquote className="blockquote text-center">
+                                <i className="fa fa-quote-left fa-pull-left"></i>
+                                <p className="mb-0">
+                                The more that you read, the more things you will know. The more you learn, the more places you'll go.
+                                </p>
+                                <i className="fa fa-quote-right fa-pull-right"></i>
+                                <footer className="blockquote-footer">
+                                    <cite title="Source Title">Dr. Seuss</cite>
+                                </footer>
+                            </blockquote>
                         </CSSTransition>
                     </Container>
                 </Jumbotron>
