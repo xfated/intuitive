@@ -133,6 +133,10 @@ const Application = (props) => {
                                 classNames="wait-phrase">
                                 <h5>
                                     {waitPhrase}
+                                    {
+                                        storyLoaded &&
+                                        <i className="ml-4 fas fa-bullhorn fa-lg"></i>
+                                    }
                                 </h5>
                             </CSSTransition>
                         </TransitionGroup>
