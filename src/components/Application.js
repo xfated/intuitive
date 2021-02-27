@@ -25,7 +25,7 @@ const Application = (props) => {
     }, [storyLoading]);
 
     function changeStoryPrompt(event) {
-        setStoryPrompt(event.value);
+        setStoryPrompt(event.target.value);
     }   
 
     async function getStory(event){
@@ -67,7 +67,7 @@ const Application = (props) => {
         const element = document.createElement("a");
         const file = new Blob([story], {type: 'text/plain'});
         element.href = URL.createObjectURL(file);
-        element.download = storyPrompt.replace(/[^a-z]/gi, '') + '.txt';
+        element.download = storyPrompt.replace(/[^a-z0-9]/gi, '') + '.txt';
         document.body.appendChild(element);
         element.click();
     }
