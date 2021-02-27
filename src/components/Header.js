@@ -46,10 +46,10 @@ class Header extends Component {
                 return( 
                     <ListGroupItem key={instruction.text}>
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-4">
                                 {instruction.text}
                             </div>
-                            <div className="col-6">
+                            <div className="col-8">
                                 <img src={instruction.image} width="100%" alt="instruction" />
                             </div>
                         </div>
@@ -86,7 +86,7 @@ class Header extends Component {
         const RenderCreators = () => {
             const CreatorPics = Creators.map((creator) => {
                 return(
-                    <div className="col-6 col-md-3 p-3">
+                    <div key={creator.name} className="col-6 col-md-3 p-3">
                         <a href={creator.link} className="creator-link">
                             <div className="row">
                                 <div className="col-12 flex flex-horizontal-center">
@@ -115,12 +115,12 @@ class Header extends Component {
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <Button onClick={this.toggleTutModal} className="tutorial-icon ml-1 mr-1">
-                                <i class="fas fa-chalkboard-teacher fa-lg"></i>
+                                <i class="fas fa-graduation-cap fa-lg fa-fw"></i>
                             </Button>
                         </NavItem>
                         <NavItem>
                             <Button onClick={this.toggleMotivationModal} className="motivation-icon ml-1 mr-1">
-                                <i class="far fa-lightbulb fa-lg"></i>
+                                <i class="far fa-lightbulb fa-lg fa-fw"></i>
                             </Button>
                         </NavItem>
                     </Nav>
@@ -129,10 +129,10 @@ class Header extends Component {
                                 borderRadius: "0px"}}>
                     <Container className="text-center">
                         <h1 className="display-3 profile-header text-center">
-                            <img src="assets/images/tattletale.png" width="50%" alt="TattleTale"></img>
+                            <img src="assets/images/tattletale.png" className="main-logo" alt="TattleTale"></img>
                         </h1>
                         <CSSTransition in={this.state.mounted} classNames="profile-desc-trans" timeout={1000}>
-                            <blockquote className="blockquote text-center">
+                            <blockquote className="quote-seuss blockquote text-center">
                                 <i className="fa fa-quote-left fa-pull-left"></i>
                                 <p className="mb-0">
                                 The more that you read, the more things you will know. The more you learn, the more places you'll go.
@@ -145,7 +145,7 @@ class Header extends Component {
                         </CSSTransition>
                     </Container>
                 </Jumbotron>
-                <Modal isOpen={this.state.isTutModalOpen} toggle={this.toggleTutModal} className="modal-w80">
+                <Modal isOpen={this.state.isTutModalOpen} toggle={this.toggleTutModal} className="modal-w90">
                     <ModalHeader toggle={this.toggleTutModal} charCode="x" >
                         Tutorial
                     </ModalHeader>  
@@ -153,7 +153,7 @@ class Header extends Component {
                         <Tutorial />
                     </ModalBody>
                 </Modal>
-                <Modal isOpen={this.state.isMotivationModalOpen} toggle={this.toggleMotivationModal} className="modal-w80">
+                <Modal isOpen={this.state.isMotivationModalOpen} toggle={this.toggleMotivationModal} className="modal-w90">
                     <ModalHeader toggle={this.toggleMotivationModal} charCode="x">
                         Project Motivations
                     </ModalHeader>

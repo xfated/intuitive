@@ -89,3 +89,31 @@
 .creator-profile-text{
     font-family:didactgothic;
 }
+
+.main-logo{
+    width: 80%;
+}
+
+.quote-seuss{
+    font-size:1.3em;
+    font-family: indieflower;
+}
+
+@media (min-width: 568px) {  
+    .quote-seuss{
+        font-size:1.4em;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    .main-logo{
+        width: 50%;
+        max-width: 400px;
+    }
+    .quote-seuss{
+        font-size:1.5em;
+    }
+}
+
