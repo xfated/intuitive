@@ -18,6 +18,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'didactgothic';
+  src: url('./fonts/didactgothic/didactgothic-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .divider{
   border-top: 4px solid var(--muted);
 }

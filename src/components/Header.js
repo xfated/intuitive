@@ -52,7 +52,6 @@ class Header extends Component {
                             </div>
                         </div>
                     </ListGroupItem>
-
                 );
             });
             return (
@@ -80,8 +79,8 @@ class Header extends Component {
                 <Jumbotron style={{ backgroundImage: `url('assets/images/wallpaper.jfif')`, backgroundSize: 'cover', 
                                 borderRadius: "0px"}}>
                     <Container className="text-center">
-                        <h1 className="display-3 profile-header">
-                            {this.state.title}
+                        <h1 className="display-3 profile-header text-center">
+                            <img src="assets/images/tattletale.png" width="70%" alt="TattleTale"></img>
                         </h1>
                         <CSSTransition in={this.state.mounted} classNames="profile-desc-trans" timeout={1000}>
                             <p className="lead profile-desc">{this.state.description}</p>
