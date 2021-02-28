@@ -28,6 +28,10 @@ const Application = (props) => {
         setStoryPrompt(event.target.value);
     }   
 
+    function selectAll(event){
+        event.target.select();
+    }
+
     async function getStory(event){
         // Things to do while story is loading
         setStoryLoaded(false);
@@ -111,7 +115,7 @@ const Application = (props) => {
                         <Form className="text-center">
                             <FormGroup className="flex flex-horizontal-center">
                                 <Input type="textarea" name="prompt" id="storyprompt" className="col-12 col-md-8 story-input-box"
-                                    value={storyPrompt} onChange={changeStoryPrompt} />
+                                    value={storyPrompt} onChange={changeStoryPrompt} onClick={selectAll}/>
                             </FormGroup>    
                             <FormGroup>
                                 <Button disabled={storyLoading} className="btn btn-outline-info bg-light btn-lg"
