@@ -41,6 +41,11 @@ const NavInfo = (props) => {
     }
     const Motivation = () => {
         const MotivationParts = Motivations.map((motivation) => {
+            const desc = motivation.description.split('\n').map((line,i) => {
+                return(
+                    <span key={line+i}>{line}<br /></span>
+                )
+            })
             return(
                 <ListGroupItem key={motivation.point}>
                     <div className="row">
@@ -48,7 +53,7 @@ const NavInfo = (props) => {
                             <h2>{motivation.point}</h2>
                         </div>
                         <div className="col-12 col-md-8">
-                            <p>{motivation.description}</p>
+                            <p>{desc}</p>
                         </div>      
                     </div>
                 </ListGroupItem>
@@ -89,7 +94,7 @@ const NavInfo = (props) => {
 
 
     return(
-        <>
+        <div fluid>
             <Navbar className="modal-buttons">
                 <Nav className="ml-auto" navbar>
                     <NavItem>
@@ -121,7 +126,7 @@ const NavInfo = (props) => {
                     <RenderCreators />
                 </ModalBody>
             </Modal>
-        </> 
+        </div> 
     );
 }
 

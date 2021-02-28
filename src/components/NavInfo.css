@@ -8,10 +8,12 @@
 
 .modal-buttons{
     padding: 10px;
+    background: green;
+    width: 99vw !important;
     background: rgba(0,0,0,0);
     position:fixed;
     top:0;
-    right:0;
+    z-index: 1;
 }
 
 .motivation-icon {

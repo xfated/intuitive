@@ -1,13 +1,14 @@
 export const Motivations = [
     {
         "point":"What?",
-        "description":"We hope to increase the accessibility and exposure to reading in developing countries."
+        "description":"Our Mission is to elevate literacy in developing regions. \nWe hope to increase the accessibility and exposure to reading in developing countries."
     },
     {
         "point":"Why?",
-        "description":"Because, we strongly believe that education is a social leveller. " +
+        "description":"We strongly believe that education is a social leveller. " +
                     "Reading books and stories have tremendous impacts on cognitive and linguistics " +
-                    "development which can be difficult to access for the illiterate." 
+                    "development. However, many families in developing countries lack the access to physical books and reading exposure. " +
+                    "\nWe choose to start with children's stories as we hope to inspire learning from a young age, alongside being an engaging avenue that spurs creativity." 
     },
     {
         "point":"How?",
