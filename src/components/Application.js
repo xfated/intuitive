@@ -68,13 +68,14 @@ const Application = (props) => {
                 console.log('story is: ' + generatedStory);
                 if(generatedStory !== undefined){
                     setStory(generatedStory);
+                    setStoryLoaded(true);
                 }   
                 else{
                     setStory('I\'m sorry :( we ran out of ideas');
+                    setStoryLoaded(false);
                 }
                 // Story loaded, turn off other stuff
                 setStoryLoading(false);
-                setStoryLoaded(true);
             }, 10000);
         }
         catch (e) {
