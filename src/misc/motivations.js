@@ -1,7 +1,7 @@
 export const Motivations = [
     {
         "point":"What?",
-        "description":"Our Mission is to elevate literacy in developing regions. \nWe hope to increase the accessibility and exposure to reading in developing countries."
+        "description":"Our Mission is to elevate literacy in developing regions. \nWe want to increase the accessibility and exposure to reading in developing countries."
     },
     {
         "point":"Why?",
