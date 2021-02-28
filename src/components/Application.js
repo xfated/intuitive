@@ -76,24 +76,11 @@ const Application = (props) => {
                 }
                 // Story loaded, turn off other stuff
                 setStoryLoading(false);
-            }, 10000);
+            }, 4000);
         }
         catch (e) {
             console.log('Error' + e);
-        }
-            
-        // console.log('data is: ' + data);
-        // await setTimeout(() => {
-        //     console.log('waiting');
-        //     setStoryLoaded(true);
-        //     console.log(storyLoading);
-        //     setStoryLoading(false);
-        //     setWaitPhrase('Here\'s today\'s adventure!');
-        //     setStory('Inserts story here');
-        // }, 10000);
-
-
-        
+        }        
     }
 
     // Downloads the story as a .txt file for user
@@ -125,7 +112,7 @@ const Application = (props) => {
                                     value={storyPrompt} onChange={changeStoryPrompt} />
                             </FormGroup>    
                             <FormGroup>
-                                <Button className="btn btn-outline-info bg-light btn-lg"
+                                <Button disabled={storyLoading} className="btn btn-outline-info bg-light btn-lg"
                                     onClick={getStory}>
                                     <small>Generate</small>
                                     <i class="fas fa-book fa-lg ml-2"></i>
@@ -158,7 +145,7 @@ const Application = (props) => {
                                 {
                                     storyLoading &&
                                     <div className="text-center">
-                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                        <i class="loading-icon fas fa-circle-notch"></i>
                                     </div>
                                 }
                                 {

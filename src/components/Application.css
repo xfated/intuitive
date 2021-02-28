@@ -56,3 +56,17 @@
     opacity:0.01;
     transition: all 500ms;
 }
+
+@keyframes rotate {
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-icon {
+    animation: rotate 3s infinite;
+    color: var(--text);
+}
