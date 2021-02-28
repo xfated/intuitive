@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Application.css'
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Row, Col } from 'reactstrap';
 import { WaitPhrases } from '../misc/waitphrases';
 import Book from './Book';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'; 
@@ -107,24 +107,41 @@ const Application = (props) => {
                     <h6>A tiny prompt for a world of adventure</h6>
                     <div className="offset-2 col-8 border-bottom"></div>
                 </div>
-                <div className="row">
+                <div className="row flex flex-horizontal-center">
                     <div className="col-12 story-prompt text-center">
                         <h5>How does your story start?</h5>
                     </div>
-                    <div className="col-12 story-input text-center">
+                    <div className="col-12 col-md-8 story-input text-center">
                         <Form className="text-center">
-                            <FormGroup className="flex flex-horizontal-center">
-                                <Input type="textarea" name="prompt" id="storyprompt" className="col-12 col-md-8 story-input-box"
-                                    value={storyPrompt} onChange={changeStoryPrompt} onClick={selectAll}/>
-                            </FormGroup>    
-                            <FormGroup>
-                                <Button disabled={storyLoading} className="btn btn-outline-info bg-light btn-lg"
-                                    onClick={getStory}>
-                                    <small>Generate</small>
-                                    <i className="fas fa-book fa-lg ml-2"></i>
-                                </Button>
-                                
-                            </FormGroup>
+                            <Row>
+                                <Col xs="10">
+                                    <FormGroup className="flex flex-horizontal-center">
+                                        <Input type="textarea" name="prompt" id="storyprompt" className="story-input-box"
+                                            value={storyPrompt} onChange={changeStoryPrompt} onClick={selectAll}/>
+                                    </FormGroup>
+                                </Col>
+                                <Col xs="2">
+                                    <FormGroup>
+                                        <Input type="select" name="select" id="selectPrompt" value="" onChange={changeStoryPrompt}>
+                                            <option></option>
+                                            <option>The sky is falling.</option>
+                                            <option>Why are curtains blue?</option>
+                                            <option>Purple apples are happy apples.</option>
+                                            <option>Oh where is my bb loh?</option>
+                                            <option>She sells seashells</option>
+                                        </Input>
+                                    </FormGroup>
+                                </Col>
+                            </Row>    
+                            <div className="col-12">
+                                <FormGroup>
+                                    <Button disabled={storyLoading} className="btn btn-outline-info bg-light btn-lg"
+                                        onClick={getStory}>
+                                        <small>Generate</small>
+                                        <i className="fas fa-book fa-lg ml-2"></i>
+                                    </Button>
+                                </FormGroup>
+                            </div>
                         </Form>     
                     </div>
                     <div className="col-12 story-title text-center">
