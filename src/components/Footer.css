@@ -36,15 +36,15 @@
 
 @keyframes pivot {
     50% {
-        transform: rotate(-30deg);
+        transform: rotate(-80deg);
     }
     100% {
-        transform: rotate(15deg);
+        transform: rotate(0deg);
     }
 }
 
 .quote-icon {
-    animation: pivot 5s infinite alternate;
+    animation: pivot 5s infinite;
     color: var(--background) !important;
 }
 

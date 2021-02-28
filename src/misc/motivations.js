@@ -11,7 +11,7 @@ export const Motivations = [
     },
     {
         "point":"How?",
-        "description":"We utilized the GPT2 language model for story generation through a simple, no-frill web application."
+        "description":"We utilized the GPT2 language model for story generation through a simple, no-frills web application."
     },   
     {
         "point":"Who?",

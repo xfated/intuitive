@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './Application.css'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import { WaitPhrases } from '../misc/waitphrases';
 import Book from './Book';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'; 
 
 const Application = (props) => {
 
-    const [storyPrompt, setStoryPrompt] = useState('One windy morning...');
+    const [storyPrompt, setStoryPrompt] = useState('I saw an elf today...');
     const [story, setStory] = useState('I wonder what\'s in store today...');
     const [storyLoading, setStoryLoading] = useState(false);
     const [storyLoaded, setStoryLoaded] = useState(false);
