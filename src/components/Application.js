@@ -121,8 +121,8 @@ const Application = (props) => {
                                     </FormGroup>
                                 </Col>
                                 <Col xs="2">
-                                    <FormGroup>
-                                        <Input type="select" name="select" id="selectPrompt" value="" onChange={changeStoryPrompt}>
+                                    <FormGroup >
+                                        <Input className="mt-2" type="select" name="select" id="selectPrompt" value="" onChange={changeStoryPrompt}>
                                             <option></option>
                                             <option>The sky is falling.</option>
                                             <option>Why are curtains blue?</option>
