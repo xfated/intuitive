@@ -1,0 +1,50 @@
+
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+
+.modal-buttons{
+    padding: 10px;
+    background: rgba(0,0,0,0);
+    position:fixed;
+    top:0;
+    right:0;
+}
+
+.motivation-icon {
+    color: #fdff7b;
+}
+
+.tutorial-icon{
+    color: #ffe3fc;
+}
+
+.profile-pic-frame {
+    width: 65% !important;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--text);
+    text-align: center;
+    height:0;
+    padding-bottom: 60%;
+}
+
+.profile-pic {
+    display: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    height: auto;
+}
+.creator-link{
+    color: black !important;                    
+}
+.creator-profile-text{
+    font-family:didactgothic;
+}

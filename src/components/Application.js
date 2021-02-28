@@ -34,26 +34,18 @@ const Application = (props) => {
         setStoryLoading(true);
 
         // Making request for story
-        const requestOptions = {
-            mode:'cors',
+        var requestOptions = {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "promptText": "This is from the app",
+                "promptText": `${storyPrompt}`,
             })
         };
         // console.log(requestOptions);
         event.preventDefault();
         //https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/ https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/test/
-        // fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions)
-        //     .then(async (res) => {
-        //         var data = await res.json();
-        //         var message = data.message;
-        //         var recordId = data.recordId;
-        //     })
-        //     .catch(console.error);
         try{
             // submit prompt and retrieve record id 
             var result = await fetch('https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/', requestOptions);
@@ -64,9 +56,25 @@ const Application = (props) => {
             console.log('record id is: ' + recordId);
             
             // fetch story after 10seconds (takes time to generate)
-            await setTimeout(() => {
-                
+            await setTimeout(async () => {
+                var requestOptions = {
+                    method: 'GET',
+                };
+                var reqAddress = `https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/${recordId}`;
+                console.log('Getting story from: ' + reqAddress);
+                var result = await fetch(`https://zxismlb0q7.execute-api.us-east-1.amazonaws.com/dev/records/${recordId}`, requestOptions);
+                var data = await result.json();
+                var generatedStory = data.story;
+                console.log('story is: ' + generatedStory);
+                if(generatedStory !== undefined){
+                    setStory(generatedStory);
+                }   
+                else{
+                    setStory('I\'m sorry :( we ran out of ideas');
+                }
                 // Story loaded, turn off other stuff
+                setStoryLoading(false);
+                setStoryLoaded(true);
             }, 10000);
         }
         catch (e) {
@@ -146,7 +154,16 @@ const Application = (props) => {
                     <div className="col-12 flex flex-horizontal-center">
                         <div className="story-story col-12 col-md-8">
                             <div className="story-content">
-                                <Book story={story} />
+                                {
+                                    storyLoading &&
+                                    <div className="text-center">
+                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                    </div>
+                                }
+                                {
+                                    !storyLoading &&
+                                    <Book story={story} />
+                                }
                             </div>
                         </div>
                     </div>
