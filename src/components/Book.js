@@ -3,7 +3,7 @@ import React from 'react';
 
 const Book = (props) => {
     return ( 
-        <div>
+        <div className="text-justify">
             <p>
                 {props.story}
             </p>

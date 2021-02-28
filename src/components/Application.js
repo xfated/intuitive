@@ -68,10 +68,12 @@ const Application = (props) => {
                 console.log('story is: ' + generatedStory);
                 if(generatedStory !== undefined){
                     setStory(generatedStory);
+                    setWaitPhrase('Here\'s today\'s adventure!');
                     setStoryLoaded(true);
                 }   
                 else{
-                    setStory('I\'m sorry :( we ran out of ideas');
+                    setWaitPhrase('I\'m sorry :( we ran out of ideas');
+                    setStory('. . .');
                     setStoryLoaded(false);
                 }
                 // Story loaded, turn off other stuff
@@ -115,7 +117,7 @@ const Application = (props) => {
                                 <Button disabled={storyLoading} className="btn btn-outline-info bg-light btn-lg"
                                     onClick={getStory}>
                                     <small>Generate</small>
-                                    <i class="fas fa-book fa-lg ml-2"></i>
+                                    <i className="fas fa-book fa-lg ml-2"></i>
                                 </Button>
                                 
                             </FormGroup>
@@ -132,7 +134,7 @@ const Application = (props) => {
                                     {
                                         storyLoaded &&
                                         <Button className="read-aloud-button">
-                                            <i className="ml-4 fas fa-bullhorn fa-lg"></i>
+                                            <i className="ml-4 mb-2 fas fa-bullhorn fa-lg"></i>
                                         </Button>
                                     }
                                 </h5>
@@ -145,7 +147,7 @@ const Application = (props) => {
                                 {
                                     storyLoading &&
                                     <div className="text-center">
-                                        <i class="loading-icon fas fa-circle-notch"></i>
+                                        <i className="loading-icon fas fa-circle-notch fa-lg"></i>
                                     </div>
                                 }
                                 {

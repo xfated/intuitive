@@ -94,12 +94,12 @@ const NavInfo = (props) => {
                 <Nav className="ml-auto" navbar>
                     <NavItem>
                         <Button onClick={toggleTutModal} className="tutorial-icon ml-1 mr-1">
-                            <i class="fas fa-graduation-cap fa-lg fa-fw"></i>
+                            <i className="fas fa-graduation-cap fa-lg fa-fw"></i>
                         </Button>
                     </NavItem>
                     <NavItem>
                         <Button onClick={toggleMotivationModal} className="motivation-icon ml-1 mr-1">
-                            <i class="far fa-lightbulb fa-lg fa-fw"></i>
+                            <i className="far fa-lightbulb fa-lg fa-fw"></i>
                         </Button>
                     </NavItem>
                 </Nav>
